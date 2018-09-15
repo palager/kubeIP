@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kubeip
-  namespace: default
+  namespace: nginx-ingress
 spec:
   replicas: 1
   selector:
@@ -16,7 +16,7 @@ spec:
         priorityClassName: system-cluster-critical
         containers:
         - name: "kubeip"
-          image: doitintl/kubeip:latest
+          image: gcr.io/cosmocr-at-upspin/kubeip:latest
           imagePullPolicy: Always
           volumeMounts:
           - name: google-cloud-key
